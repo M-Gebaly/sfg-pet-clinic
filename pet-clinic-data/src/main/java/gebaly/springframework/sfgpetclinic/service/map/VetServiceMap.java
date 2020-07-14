@@ -1,11 +1,13 @@
 package gebaly.springframework.sfgpetclinic.service.map;
 
 import gebaly.springframework.sfgpetclinic.model.Vet;
-import gebaly.springframework.sfgpetclinic.service.CrudService;
+import gebaly.springframework.sfgpetclinic.service.VetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+@Service
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
         return super.findAll();

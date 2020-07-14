@@ -4,8 +4,6 @@ import gebaly.springframework.sfgpetclinic.model.Owner;
 import gebaly.springframework.sfgpetclinic.model.Vet;
 import gebaly.springframework.sfgpetclinic.service.OwnerService;
 import gebaly.springframework.sfgpetclinic.service.VetService;
-import gebaly.springframework.sfgpetclinic.service.map.OwnerServiceMap;
-import gebaly.springframework.sfgpetclinic.service.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +14,17 @@ public class DataLoader implements CommandLineRunner /*For loading data*/{
     private final OwnerService ownerService;
     private final VetService vetService;
 
+    //@Autowired no need it generated automatically
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
+    }
+
+    /*
     public DataLoader() {
         ownerService = new OwnerServiceMap();
         vetService = new VetServiceMap();
-    }
+    }*/
 
     @Override
     public void run(String... args) throws Exception {
