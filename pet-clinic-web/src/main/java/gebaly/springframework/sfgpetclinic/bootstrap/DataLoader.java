@@ -1,8 +1,10 @@
 package gebaly.springframework.sfgpetclinic.bootstrap;
 
 import gebaly.springframework.sfgpetclinic.model.Owner;
+import gebaly.springframework.sfgpetclinic.model.PetType;
 import gebaly.springframework.sfgpetclinic.model.Vet;
 import gebaly.springframework.sfgpetclinic.service.OwnerService;
+import gebaly.springframework.sfgpetclinic.service.PetTypeService;
 import gebaly.springframework.sfgpetclinic.service.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,11 +15,13 @@ public class DataLoader implements CommandLineRunner /*For loading data*/{
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
     //@Autowired no need it generated automatically
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     /*
@@ -28,6 +32,14 @@ public class DataLoader implements CommandLineRunner /*For loading data*/{
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        dog.setName("Cat");
+        PetType savedCatPetType = petTypeService.save(cat);
 
         Owner owner1 = new Owner();
         //owner1.setId(1L);
