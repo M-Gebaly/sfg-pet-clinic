@@ -1,6 +1,7 @@
 package gebaly.springframework.sfgpetclinic.bootstrap;
 
 import gebaly.springframework.sfgpetclinic.model.Owner;
+import gebaly.springframework.sfgpetclinic.model.Pet;
 import gebaly.springframework.sfgpetclinic.model.PetType;
 import gebaly.springframework.sfgpetclinic.model.Vet;
 import gebaly.springframework.sfgpetclinic.service.OwnerService;
@@ -8,6 +9,8 @@ import gebaly.springframework.sfgpetclinic.service.PetTypeService;
 import gebaly.springframework.sfgpetclinic.service.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 
 @Component
@@ -45,6 +48,16 @@ public class DataLoader implements CommandLineRunner /*For loading data*/{
         //owner1.setId(1L);
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
+        owner1.setAddress("1123 Monib");
+        owner1.setCity("Giza");
+        owner1.setTelephone("025982358");
+
+        Pet miskesPet = new Pet();
+        miskesPet.setPetType(savedDogPetType);
+        miskesPet.setOwner(owner1);
+        miskesPet.setBirthDate(LocalDate.now());
+        miskesPet.setName("Rosco");
+        owner1.getPets().add(miskesPet);
 
         ownerService.save(owner1);
 
@@ -52,6 +65,16 @@ public class DataLoader implements CommandLineRunner /*For loading data*/{
         //owner2.setId(2L);
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
+        owner2.setAddress("1123 Shobra");
+        owner2.setCity("Cairo");
+        owner2.setTelephone("026459324");
+
+        Pet fionasCat = new Pet();
+        fionasCat.setPetType(savedCatPetType);
+        fionasCat.setOwner(owner2);
+        fionasCat.setBirthDate(LocalDate.now());
+        fionasCat.setName("Just Cat");
+        owner2.getPets().add(fionasCat);
 
         ownerService.save(owner2);
 
