@@ -1,15 +1,15 @@
 package gebaly.springframework.sfgpetclinic.service.map;
 
-import gebaly.springframework.sfgpetclinic.model.Specialty;
-import gebaly.springframework.sfgpetclinic.service.SpecialtiesService;
+import gebaly.springframework.sfgpetclinic.model.Speciality;
+import gebaly.springframework.sfgpetclinic.service.SpecialtyService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class SpecialtiesMapService extends AbstractMapService<Specialty, Long> implements SpecialtiesService {
+public class SpecialtyMapService extends AbstractMapService<Speciality, Long> implements SpecialtyService {
     @Override
-    public Set<Specialty> findAll() {
+    public Set<Speciality> findAll() {
         return super.findAll();
     }
 
@@ -19,17 +19,17 @@ public class SpecialtiesMapService extends AbstractMapService<Specialty, Long> i
     }
 
     @Override
-    public void delete(Specialty object) {
+    public void delete(Speciality object) {
         super.delete(object);
     }
 
     @Override
-    public Specialty save(Specialty object) {
+    public Speciality save(Speciality object) {
         return super.save(object);
     }
 
     @Override
-    public Specialty findById(Long id) {
+    public Speciality findById(Long id) {
         return super.findById(id);
     }
 }
