@@ -1,11 +1,20 @@
 package gebaly.springframework.sfgpetclinic.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "visits")
 public class Visit {
 
+    @Column(name = "date")
     private LocalDate date;
+
+    @Column(name = "description")
     private String description;
+
+    @ManyToMany
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
     public LocalDate getDate() {
