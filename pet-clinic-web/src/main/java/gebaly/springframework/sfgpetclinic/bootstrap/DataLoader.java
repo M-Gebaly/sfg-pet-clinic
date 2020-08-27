@@ -1,10 +1,7 @@
 package gebaly.springframework.sfgpetclinic.bootstrap;
 
 import gebaly.springframework.sfgpetclinic.model.*;
-import gebaly.springframework.sfgpetclinic.service.OwnerService;
-import gebaly.springframework.sfgpetclinic.service.PetTypeService;
-import gebaly.springframework.sfgpetclinic.service.SpecialtyService;
-import gebaly.springframework.sfgpetclinic.service.VetService;
+import gebaly.springframework.sfgpetclinic.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,13 +15,16 @@ public class DataLoader implements CommandLineRunner /*For loading data*/{
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
     //@Autowired no need it generated automatically
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     /*
@@ -97,6 +97,13 @@ public class DataLoader implements CommandLineRunner /*For loading data*/{
         owner2.getPets().add(fionasCat);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionasCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("smeezy Kitty");
+
+        visitService.save(catVisit);
 
         System.out.println("Loaded Owners.....");
 
